@@ -3,6 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 from cinema.models import Genre, Actor, CinemaHall, Movie, MovieSession, Order
+from cinema.pagination import LargeResultsSetPagination
 from cinema.serializers import (
     GenreSerializer,
     ActorSerializer,
@@ -89,6 +90,7 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    pagination_class = LargeResultsSetPagination
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
