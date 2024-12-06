@@ -58,6 +58,7 @@ class OrderApiTests(TestCase):
         orders_response = self.client.get("/api/cinema/orders/")
         self.assertEqual(orders_response.status_code, status.HTTP_200_OK)
         self.assertEqual(orders_response.data["count"], 1)
+        print("Response data:", orders_response.data)
         order = orders_response.data["results"][0]
         self.assertEqual(len(order["tickets"]), 1)
         ticket = order["tickets"][0]
