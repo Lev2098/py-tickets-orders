@@ -95,7 +95,7 @@ class Ticket(models.Model):
         if not (1 <= row <= rows):
             raise error_to_raise(
                 {
-                    row: f"row must be in range: [1, {rows}], not {row}  {row.real}"
+                    row: f"row must be in range: [1, {rows}], not {row}"
                 }
             )
 
